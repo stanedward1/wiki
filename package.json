@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "ant-design-vue": "^2.2.8",
+    "ant-design-vue": "^3.2.2",
     "rxjs": "^7.5.5",
     "vue": "^3.2.33"
   }
