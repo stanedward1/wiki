@@ -1,8 +1,6 @@
-package com.biu.wiki.domain;
+package com.biu.wiki.resp;
 
-public class Ebook {
-    private Integer id;
-
+public class EbookResp {
     private String name;
 
     private Long category1Id;
@@ -19,13 +17,6 @@ public class Ebook {
 
     private Integer voteCount;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -97,7 +88,6 @@ public class Ebook {
         stringBuilder.append(getClass().getSimpleName());
         stringBuilder.append(" [");
         stringBuilder.append("Hash = ").append(hashCode());
-        stringBuilder.append(", id=").append(id);
         stringBuilder.append(", name=").append(name);
         stringBuilder.append(", category1Id=").append(category1Id);
         stringBuilder.append(", category2Id=").append(category2Id);
