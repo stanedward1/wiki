@@ -13,7 +13,7 @@ public class EbookService {
     @Resource
     private EbookMapper ebookMapper;
 
-    public List<Ebook> list() {
+    public List<Ebook> list(String name) {
         return ebookMapper.selectAll();
     }
 }

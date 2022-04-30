@@ -25,9 +25,9 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/list")
-    public CommonResp list() {
+    public CommonResp list(String name) {
         CommonResp<List<Ebook>> objectCommonResp = new CommonResp<>();
-        List<Ebook> list = ebookService.list();
+        List<Ebook> list = ebookService.list(name);
         objectCommonResp.setContent(list);
         return objectCommonResp;
     }
