@@ -22,9 +22,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      selectedKeys1: ref<string[]>(['2']),
-      selectedKeys2: ref<string[]>(['1']),
-      openKeys: ref<string[]>(['sub1']),
     };
   },
 });

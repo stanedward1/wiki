@@ -1,6 +1,5 @@
 package com.biu.wiki.controller;
 
-import com.biu.wiki.domain.Ebook;
 import com.biu.wiki.req.EbookReq;
 import com.biu.wiki.resp.CommonResp;
 import com.biu.wiki.resp.EbookResp;
@@ -14,7 +13,7 @@ import java.util.List;
 
 /**
  * @ClassName EbookController
- * @Description TODO
+ * @Description ……
  * @Author biu
  * @Date 2022/2/25 2:22 PM
  **/
