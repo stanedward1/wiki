@@ -1,35 +1,24 @@
 <template>
   <a-layout>
-    <a-layout-header class="header">
-      <div class="logo"/>
-      <a-menu
-          v-model:selectedKeys="selectedKeys1"
-          theme="dark"
-          mode="horizontal"
-          :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item key="1">nav 1</a-menu-item>
-        <a-menu-item key="2">nav 2</a-menu-item>
-        <a-menu-item key="3">nav 3</a-menu-item>
-      </a-menu>
-    </a-layout-header>
-    <a-layout-content style="padding: 0 50px">
-      <router-view/>
-    </a-layout-content>
-    <a-layout-footer style="text-align: center">
-      biu_wiki ©2022 Created by longbiu
-    </a-layout-footer>
+    <the-header></the-header>
+    <router-view/>
+    <the-footer></the-footer>
   </a-layout>
 </template>
+
 <script lang="ts">
 import {UserOutlined, LaptopOutlined, NotificationOutlined} from '@ant-design/icons-vue';
 import {defineComponent, ref} from 'vue';
+import theHeader from "@/components/the-header.vue";
+import theFooter from "@/components/the-footer.vue";
 
 export default defineComponent({
   components: {
     UserOutlined,
     LaptopOutlined,
     NotificationOutlined,
+    theHeader,
+    theFooter
   },
   setup() {
     return {
