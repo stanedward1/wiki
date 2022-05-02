@@ -44,13 +44,15 @@
       </a-menu>
     </a-layout-sider>
     <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
-      Content
+      <pre>
+        {{ ebooks }}
+      </pre>
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent, onMounted, ref} from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import axios from "axios";
 
@@ -61,9 +63,22 @@ export default defineComponent({
   },
   setup() {
     console.log("setup");
-    axios.get(" http://localhost:8080/ebook/list?name=Java").then(function (response) {
-      console.log(response)
+    const ebooks = ref();
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onMounted(() => {
+      console.log("onMounted")
+      // eslint-disable-next-line no-undef
+      axios.get(" http://localhost:8080/ebook/list?name=Java").then(function (response) {
+        // eslint-disable-next-line no-undef
+        const data = response.data
+        ebooks.value = data.content
+        console.log(response)
+      });
     })
+    return {
+      ebooks
+    }
   }
 });
 </script>
