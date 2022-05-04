@@ -102,7 +102,7 @@ export default defineComponent({
     onMounted(() => {
       console.log("onMounted")
       // eslint-disable-next-line no-undef
-      axios.get(process.env.VUE_APP_SERVER + "/ebook/list").then(function (response) {
+      axios.get("/ebook/list").then(function (response) {
         // eslint-disable-next-line no-undef
         const data = response.data
         ebooks.value = data.content
