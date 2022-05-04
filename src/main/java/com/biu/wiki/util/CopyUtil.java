@@ -6,6 +6,9 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Author longbiu
+ */
 public class CopyUtil {
     /**
      * 单体复制
