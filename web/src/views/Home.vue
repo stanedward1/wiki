@@ -43,7 +43,7 @@
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
-    <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
+    <a-layout-content :style="{ padding: '15px 24px', minHeight: '280px' }">
       <a-list item-layout="vertical" size="large" :grid="{gutter:20,column:3}"
               :data-source="ebooks">
         <template #renderItem="{ item }">
@@ -102,7 +102,7 @@ export default defineComponent({
     onMounted(() => {
       console.log("onMounted")
       // eslint-disable-next-line no-undef
-      axios.get(" http://localhost:8080/ebook/list?name=Java").then(function (response) {
+      axios.get(" http://localhost:8080/ebook/list").then(function (response) {
         // eslint-disable-next-line no-undef
         const data = response.data
         ebooks.value = data.content
@@ -128,4 +128,14 @@ export default defineComponent({
     }
   }
 });
+
 </script>
+<style scoped>
+.ant-avatar {
+  width: 50px;
+  height: 50px;
+  line-heignt: 50px;
+  border-radius: 8%;
+  margin: 5px 0;
+}
+</style>
