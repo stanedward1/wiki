@@ -130,6 +130,7 @@ export default defineComponent({
 });
 
 </script>
+
 <style scoped>
 .ant-avatar {
   width: 50px;
