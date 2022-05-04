@@ -44,7 +44,8 @@
       </a-menu>
     </a-layout-sider>
     <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
-      <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="ebooks">
+      <a-list item-layout="vertical" size="large" :grid="{gutter:20,column:3}"
+              :data-source="ebooks">
         <template #renderItem="{ item }">
           <a-list-item key="item.name">
             <template #actions>
@@ -58,10 +59,9 @@
                 <a :href="item.href">{{ item.name }}</a>
               </template>
               <template #avatar>
-                <a-avatar :src="item.avatar"/>
+                <a-avatar :src="item.cover"/>
               </template>
             </a-list-item-meta>
-            {{ item.content }}
           </a-list-item>
         </template>
       </a-list>
