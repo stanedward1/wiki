@@ -1,9 +1,9 @@
 <template>
   <a-layout>
     <a-layout-content :style="{ padding: '15px 24px', minHeight: '280px' }">
-      <div class="about">
+      <dev class="about">
         <h1>电子书管理</h1>
-      </div>
+      </dev>
     </a-layout-content>
   </a-layout>
 </template>
