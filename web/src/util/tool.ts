@@ -2,6 +2,7 @@ export class Tool {
     /**
      * 空校验 null或""都返回true
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public static isEmpty(obj: any) {
         if ((typeof obj === 'string')) {
             return !obj || obj.replace(/\s+/g, "") === ""
@@ -13,6 +14,7 @@ export class Tool {
     /**
      * 非空校验
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public static isNotEmpty(obj: any) {
         return !this.isEmpty(obj);
     }
@@ -27,39 +29,13 @@ export class Tool {
             return JSON.parse(JSON.stringify(obj));
         }
     }
-
-    /**
-     * 使用递归将数组转为树形结构
-     * 父ID属性为parent
-     */
-    public static array2Tree(array: any, parentId: number) {
-        if (Tool.isEmpty(array)) {
-            return [];
-        }
-
-        const result = [];
-        for (let i = 0; i < array.length; i++) {
-            const c = array[i];
-            // console.log(Number(c.parent), Number(parentId));
-            if (Number(c.parent) === Number(parentId)) {
-                result.push(c);
-
-                // 递归查看当前节点对应的子节点
-                const children = Tool.array2Tree(array, c.id);
-                if (Tool.isNotEmpty(children)) {
-                    c.children = children;
-                }
-            }
-        }
-        return result;
-    }
-
     /**
      * 随机生成[len]长度的[radix]进制数
      * @param len
      * @param radix 默认62
      * @returns {string}
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     public static uuid(len: number, radix = 62) {
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
         const uuid = [];
