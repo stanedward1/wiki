@@ -3,8 +3,9 @@ package com.biu.wiki.service;
 import com.biu.wiki.domain.Ebook;
 import com.biu.wiki.domain.EbookExample;
 import com.biu.wiki.mapper.EbookMapper;
-import com.biu.wiki.req.EbookReq;
-import com.biu.wiki.resp.EbookResp;
+import com.biu.wiki.req.EbookQueryReq;
+import com.biu.wiki.req.EbookSaveReq;
+import com.biu.wiki.resp.EbookQueryResp;
 import com.biu.wiki.resp.PageResp;
 import com.biu.wiki.util.CopyUtil;
 import com.github.pagehelper.PageHelper;
@@ -28,7 +29,7 @@ public class EbookService {
     @Resource
     private EbookMapper ebookMapper;
 
-    public PageResp<EbookResp> list(EbookReq req) {
+    public PageResp<EbookQueryResp> list(EbookQueryReq req) {
         PageHelper.startPage(req.getPage(), req.getSize());
         EbookExample ebookExample = new EbookExample();
         EbookExample.Criteria criteria = ebookExample.createCriteria();
@@ -41,10 +42,19 @@ public class EbookService {
         LOG.info("总行数：{}", pageInfo.getTotal());
         LOG.info("总页数：{}", pageInfo.getPages());
 
-        List<EbookResp> list = CopyUtil.copyList(ebookList, EbookResp.class);
-        PageResp<EbookResp> pageResp = new PageResp<>();
+        List<EbookQueryResp> list = CopyUtil.copyList(ebookList, EbookQueryResp.class);
+        PageResp<EbookQueryResp> pageResp = new PageResp<>();
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(list);
         return pageResp;
+    }
+
+    public void save(EbookSaveReq req) {
+        Ebook ebook = CopyUtil.copy(req, Ebook.class);
+        if (ObjectUtils.isEmpty(req.getId())) {
+            ebookMapper.insert(ebook);
+        } else {
+            ebookMapper.updateByPrimaryKey(ebook);
+        }
     }
 }

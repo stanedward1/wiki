@@ -3,7 +3,7 @@ package com.biu.wiki.req;
 /**
  * @author longbiu
  */
-public class EbookReq extends PageReq {
+public class EbookQueryReq extends PageReq {
     private Integer id;
 
     private String name;
