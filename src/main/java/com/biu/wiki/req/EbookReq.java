@@ -1,6 +1,9 @@
 package com.biu.wiki.req;
 
-public class EbookReq {
+/**
+ * @author longbiu
+ */
+public class EbookReq extends PageReq {
     private Integer id;
 
     private String name;
