@@ -8,6 +8,7 @@ import com.biu.wiki.req.EbookSaveReq;
 import com.biu.wiki.resp.EbookQueryResp;
 import com.biu.wiki.resp.PageResp;
 import com.biu.wiki.util.CopyUtil;
+import com.biu.wiki.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class EbookService {
 
     @Resource
     private EbookMapper ebookMapper;
+
+    @Resource
+    private SnowFlake snowFlake;
 
     public PageResp<EbookQueryResp> list(EbookQueryReq req) {
         PageHelper.startPage(req.getPage(), req.getSize());
