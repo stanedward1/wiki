@@ -114,15 +114,13 @@ export default defineComponent({
       });
     };
 
-    onMounted(()
-            => {
-          handleQuery({
-            page: 1,
-            size: pagination.value.pageSize
-          });
-        }
-    )
-    ;
+
+    onMounted(() => {
+      handleQuery({
+        page: 1,
+        size: pagination.value.pageSize
+      });
+    });
 
     return {
       ebooks,
