@@ -1,7 +1,7 @@
 package com.biu.wiki.domain;
 
 public class Ebook {
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -19,11 +19,11 @@ public class Ebook {
 
     private Integer voteCount;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,20 +93,16 @@ public class Ebook {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(getClass().getSimpleName());
-        stringBuilder.append(" [");
-        stringBuilder.append("Hash = ").append(hashCode());
-        stringBuilder.append(", id=").append(id);
-        stringBuilder.append(", name=").append(name);
-        stringBuilder.append(", category1Id=").append(category1Id);
-        stringBuilder.append(", category2Id=").append(category2Id);
-        stringBuilder.append(", description=").append(description);
-        stringBuilder.append(", cover=").append(cover);
-        stringBuilder.append(", docCount=").append(docCount);
-        stringBuilder.append(", viewCount=").append(viewCount);
-        stringBuilder.append(", voteCount=").append(voteCount);
-        stringBuilder.append("]");
-        return stringBuilder.toString();
+        return "Ebook{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category1Id=" + category1Id +
+                ", category2Id=" + category2Id +
+                ", description='" + description + '\'' +
+                ", cover='" + cover + '\'' +
+                ", docCount=" + docCount +
+                ", viewCount=" + viewCount +
+                ", voteCount=" + voteCount +
+                '}';
     }
 }
