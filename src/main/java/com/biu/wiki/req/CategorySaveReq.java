@@ -1,12 +1,19 @@
-package com.biu.wiki.domain;
+package com.biu.wiki.req;
 
-public class Category {
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author longbiu
+ */
+public class CategorySaveReq {
     private Long id;
 
     private Long parent;
 
+    @NotNull(message = "[名称]不能为空")
     private String name;
 
+    @NotNull(message = "[排序]不能为空")
     private Integer sort;
 
     public Long getId() {
@@ -43,15 +50,11 @@ public class Category {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", parent=").append(parent);
-        sb.append(", name=").append(name);
-        sb.append(", sort=").append(sort);
-        sb.append("]");
-        return sb.toString();
+        return "Category{" +
+                "id=" + id +
+                ", parent=" + parent +
+                ", name='" + name + '\'' +
+                ", sort=" + sort +
+                '}';
     }
 }

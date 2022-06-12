@@ -3,11 +3,10 @@ package com.biu.wiki.req;
 /**
  * @author longbiu
  */
-public class EbookQueryReq extends PageReq {
+public class CategoryQueryReq extends PageReq {
     private Integer id;
 
     private String name;
-
 
     public Integer getId() {
         return id;
@@ -27,7 +26,7 @@ public class EbookQueryReq extends PageReq {
 
     @Override
     public String toString() {
-        return "EbookQueryReq{" +
+        return "CategoryQueryReq{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
