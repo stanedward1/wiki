@@ -11,11 +11,32 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 12/06/2022 09:37:54
+ Date: 12/06/2022 22:55:01
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for category
+-- ----------------------------
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category`  (
+  `id` bigint(20) NOT NULL COMMENT 'id',
+  `parent` bigint(20) NOT NULL DEFAULT 0 COMMENT '父id',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
+  `sort` int(11) NULL DEFAULT NULL COMMENT '顺序',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '分类' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO `category` VALUES (100, 0, '前端开发', 100);
+INSERT INTO `category` VALUES (101, 100, 'Vue', 101);
+INSERT INTO `category` VALUES (102, 0, 'HTML', 102);
+INSERT INTO `category` VALUES (200, 0, 'Java', 200);
+INSERT INTO `category` VALUES (201, 200, '基础应用', 201);
 
 -- ----------------------------
 -- Table structure for demo
@@ -47,7 +68,7 @@ CREATE TABLE `ebook`  (
   `view_count` int(11) NULL DEFAULT NULL COMMENT '阅读数',
   `vote_count` int(11) NULL DEFAULT NULL COMMENT '点赞数',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '电子书' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '电子书' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ebook
