@@ -19,4 +19,10 @@ public interface EbookMapper {
     int updateByExampleSelective(@Param("record") Ebook record, @Param("example") EbookExample example);
 
     int updateByExample(@Param("record") Ebook record, @Param("example") EbookExample example);
+
+    int updateByPrimaryKeySelective(Ebook record);
+
+    int updateByPrimaryKey(Ebook record);
+
+    int deleteByPrimaryKey(Long id);
 }

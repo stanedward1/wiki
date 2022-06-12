@@ -1,0 +1,2 @@
+### ebook列表
+GET http://localhost:8080/ebook/list?page=1&size=1001

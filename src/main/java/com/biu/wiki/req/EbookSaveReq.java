@@ -1,8 +1,14 @@
-package com.biu.wiki.domain;
+package com.biu.wiki.req;
 
-public class Ebook {
+import javax.validation.constraints.NotNull;
+
+/**
+ * @author longbiu
+ */
+public class EbookSaveReq {
     private Long id;
 
+    @NotNull(message = "[名称]不能为空")
     private String name;
 
     private Long category1Id;
@@ -93,7 +99,7 @@ public class Ebook {
 
     @Override
     public String toString() {
-        return "Ebook{" +
+        return "EbookSaveReq{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", category1Id=" + category1Id +
