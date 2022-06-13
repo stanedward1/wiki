@@ -4,10 +4,7 @@
       <p>
         <a-form layout="inline" :model="param">
           <a-form-item>
-            <a-input v-model:value="param.name" placeholder="名称"></a-input>
-          </a-form-item>
-          <a-form-item>
-            <a-button type="primary" @click="handleQuery({page:1,size:pagination.pageSize})">
+            <a-button type="primary" @click="handleQuery()">
               查询
             </a-button>
           </a-form-item>
@@ -21,10 +18,9 @@
       <a-table
           :columns="columns"
           :row-key="record => record.id"
-          :data-source="categorys"
-          :pagination="pagination"
-          :loading="loading"
-          @change="handleTableChange">
+          :data-source="level1"
+          :loading="loading" ,
+          :pagination="false">
         <template #cover="{ text: cover }">
           <img v-if="cover" :src="cover" alt="avatar"/>
         </template>
@@ -76,11 +72,6 @@ export default defineComponent({
     const param = ref();
     param.value = {};
     const categorys = ref();
-    const pagination = ref({
-      current: 1,
-      pageSize: 10,
-      total: 0
-    });
     const loading = ref(false);
     const columns = [
       {
@@ -102,44 +93,28 @@ export default defineComponent({
       }
     ];
 
+    const level1 = ref();
+
     /**
      * 数据查询
      **/
-    const handleQuery = (params: any) => {
+    const handleQuery = () => {
       loading.value = true;
-      axios.get("/category/list", {
-        params: {
-          page: params.page,
-          size: params.size,
-          name: param.value.name
-        }
-      }).then((response) => {
+      axios.get("/category/all").then((response) => {
             loading.value = false;
             const data = response.data;
             if (data.success) {
-              categorys.value = data.content.list;
-
-              // 重置分页按钮
-              pagination.value.current = params.page;
-              pagination.value.total = data.content.total;
+              categorys.value = data.content;
+              console.log("原始数组：", categorys.value);
+              level1.value = [];
+              level1.value = Tool.array2Tree(categorys.value, 0);
+              console.log("树形结构", level1);
             } else {
-              // eslint-disable-next-line no-undef
               message.error(data.message);
             }
           }
       )
       ;
-    };
-
-    /**
-     * 表格点击页码时触发
-     */
-    const handleTableChange = (pagination: any) => {
-      console.log("看看自带的分页参数都有啥：" + pagination);
-      handleQuery({
-        page: pagination.current,
-        size: pagination.pageSize
-      });
     };
 
     // 表单
@@ -155,10 +130,7 @@ export default defineComponent({
             if (data.success) {
               modalLoading.value = false;
               modalVisible.value = false;
-              handleQuery({
-                page: pagination.value.current,
-                size: pagination.value.pageSize,
-              });
+              handleQuery();
             } else {
               message.error(data.message);
             }
@@ -184,33 +156,26 @@ export default defineComponent({
       axios.delete("/category/delete/" + id).then((response) => {
         const data = response.data;
         if (data.success) {
-          handleQuery({
-            page: pagination.value.current,
-            size: pagination.value.pageSize,
-          });
+          handleQuery();
         }
       });
     };
 
     onMounted(() => {
-      handleQuery({
-        page: 1,
-        size: pagination.value.pageSize
-      });
+      handleQuery();
     });
 
     return {
       param,
-      categorys,
-      pagination,
+      // categorys,
       columns,
       loading,
-      handleTableChange,
 
       edit,
       add,
       handleDelete,
       handleQuery,
+      level1,
 
       category,
       modalVisible,

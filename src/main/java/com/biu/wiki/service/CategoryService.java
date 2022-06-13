@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -33,9 +34,17 @@ public class CategoryService {
     @Resource
     private SnowFlake snowFlake;
 
+    public List<CategoryQueryResp> all() {
+        CategoryExample categoryExample = new CategoryExample();
+        categoryExample.setOrderByClause("sort asc");
+        List<Category> categoryList = categoryMapper.selectByExample(categoryExample);
+        return CopyUtil.copyList(categoryList, CategoryQueryResp.class);
+    }
+
     public PageResp<CategoryQueryResp> list(CategoryQueryReq req) {
         PageHelper.startPage(req.getPage(), req.getSize());
         CategoryExample categoryExample = new CategoryExample();
+        categoryExample.setOrderByClause("sort asc");
         CategoryExample.Criteria criteria = categoryExample.createCriteria();
         if (!ObjectUtils.isEmpty(req.getName())) {
             criteria.andNameLike("%" + req.getName() + "%");

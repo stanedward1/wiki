@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @ClassName CategoryController
@@ -24,6 +25,14 @@ public class CategoryController {
 
     @Resource
     private CategoryService categoryService;
+
+    @GetMapping("/all")
+    public CommonResp all() {
+        CommonResp<List<CategoryQueryResp>> objectCommonResp = new CommonResp<>();
+        List<CategoryQueryResp> list = categoryService.all();
+        objectCommonResp.setContent(list);
+        return objectCommonResp;
+    }
 
     @GetMapping("/list")
     public CommonResp list(@Valid CategoryQueryReq req) {
