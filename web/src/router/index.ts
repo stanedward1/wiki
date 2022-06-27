@@ -6,6 +6,9 @@ import About from '../views/about'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import AdminEbook from '../views/admin/admin-ebook'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import AdminCategory from '../views/admin/admin-category'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -26,6 +29,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/admin/ebook',
         name: 'AdminEbook',
         component: AdminEbook,
+    },
+    {
+        path: '/admin/category',
+        name: 'AdminCategory',
+        component: AdminCategory,
     }
 ]
 
