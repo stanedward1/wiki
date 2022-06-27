@@ -94,6 +94,22 @@ export default defineComponent({
     };
 
     const isShowWelcome = ref(true);
+    let categoryId2 = 0;
+
+    const handleQueryEbook = () => {
+      // eslint-disable-next-line no-undef
+      axios.get("/ebook/list", {
+        params: {
+          page: 1,
+          size: 1000,
+          categoryId2: categoryId2
+        }
+      }).then(function (response) {
+        // eslint-disable-next-line no-undef
+        const data = response.data
+        ebooks.value = data.content.list
+      });
+    };
 
     const handleClick = (value: any) => {
       console.log("menu click", value)
@@ -102,7 +118,9 @@ export default defineComponent({
         isShowWelcome.value = true;
         console.log(isShowWelcome)
       } else {
+        categoryId2 = value.key;
         isShowWelcome.value = false;
+        handleQueryEbook();
         console.log(isShowWelcome)
       }
     };
@@ -111,17 +129,6 @@ export default defineComponent({
     onMounted(() => {
       handleQueryCategory();
       console.log("onMounted")
-      // eslint-disable-next-line no-undef
-      axios.get("/ebook/list", {
-        params: {
-          page: 1,
-          size: 1000
-        }
-      }).then(function (response) {
-        // eslint-disable-next-line no-undef
-        const data = response.data
-        ebooks.value = data.content.list
-      });
     });
     return {
       ebooks,
