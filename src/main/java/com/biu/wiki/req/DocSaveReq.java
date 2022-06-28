@@ -1,14 +1,20 @@
-package com.biu.wiki.domain;
+package com.biu.wiki.req;
 
-public class Doc {
+import javax.validation.constraints.NotNull;
+
+public class DocSaveReq {
     private Long id;
 
+    @NotNull(message = "【电子书】不能为空")
     private Long ebookId;
 
+    @NotNull(message = "【父文本】不能为空")
     private Long parent;
 
+    @NotNull(message = "【名称】不能为空")
     private String name;
 
+    @NotNull(message = "【排序】不能为空")
     private Integer sort;
 
     private Integer viewCount;
@@ -73,7 +79,7 @@ public class Doc {
 
     @Override
     public String toString() {
-        return "Doc{" +
+        return "DocSaveReq{" +
                 "id=" + id +
                 ", ebookId=" + ebookId +
                 ", parent=" + parent +

@@ -1,6 +1,6 @@
-package com.biu.wiki.domain;
+package com.biu.wiki.resp;
 
-public class Doc {
+public class DocQueryResp {
     private Long id;
 
     private Long ebookId;
@@ -73,7 +73,7 @@ public class Doc {
 
     @Override
     public String toString() {
-        return "Doc{" +
+        return "DocQueryResp{" +
                 "id=" + id +
                 ", ebookId=" + ebookId +
                 ", parent=" + parent +

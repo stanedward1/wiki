@@ -9,6 +9,9 @@ import AdminEbook from '../views/admin/admin-ebook'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import AdminCategory from '../views/admin/admin-category'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import AdminDoc from '../views/admin/admin-doc'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -34,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/admin/category',
         name: 'AdminCategory',
         component: AdminCategory,
+    },
+    {
+        path: '/admin/doc',
+        name: 'AdminDoc',
+        component: AdminDoc,
     }
 ]
 

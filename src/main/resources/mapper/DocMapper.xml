@@ -85,6 +85,10 @@
       order by ${orderByClause}
     </if>
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from doc
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
   <delete id="deleteByExample" parameterType="com.biu.wiki.domain.DocExample">
     delete from doc
     <if test="_parameter != null">
@@ -154,46 +158,38 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByPrimaryKeySelective" parameterType="com.biu.wiki.domain.Doc">
     update doc
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="ebookId != null">
+        ebook_id = #{ebookId,jdbcType=BIGINT},
       </if>
-      <if test="record.ebookId != null">
-        ebook_id = #{record.ebookId,jdbcType=BIGINT},
+      <if test="parent != null">
+        parent = #{parent,jdbcType=BIGINT},
       </if>
-      <if test="record.parent != null">
-        parent = #{record.parent,jdbcType=BIGINT},
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="record.name != null">
-        `name` = #{record.name,jdbcType=VARCHAR},
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
       </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
       </if>
-      <if test="record.viewCount != null">
-        view_count = #{record.viewCount,jdbcType=INTEGER},
-      </if>
-      <if test="record.voteCount != null">
-        vote_count = #{record.voteCount,jdbcType=INTEGER},
+      <if test="voteCount != null">
+        vote_count = #{voteCount,jdbcType=INTEGER},
       </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByPrimaryKey" parameterType="com.biu.wiki.domain.Doc">
     update doc
-    set id = #{record.id,jdbcType=BIGINT},
-      ebook_id = #{record.ebookId,jdbcType=BIGINT},
-      parent = #{record.parent,jdbcType=BIGINT},
-      `name` = #{record.name,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER},
-      view_count = #{record.viewCount,jdbcType=INTEGER},
-      vote_count = #{record.voteCount,jdbcType=INTEGER}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
+    set ebook_id = #{ebookId,jdbcType=BIGINT},
+        parent = #{parent,jdbcType=BIGINT},
+        `name` = #{name,jdbcType=VARCHAR},
+        sort = #{sort,jdbcType=INTEGER},
+        view_count = #{viewCount,jdbcType=INTEGER},
+        vote_count = #{voteCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

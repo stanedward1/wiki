@@ -10,13 +10,15 @@ public interface DocMapper {
 
     int deleteByExample(DocExample example);
 
+    int deleteByPrimaryKey(Long id);
+
     int insert(Doc record);
 
     int insertSelective(Doc record);
 
     List<Doc> selectByExample(DocExample example);
 
-    int updateByExampleSelective(@Param("record") Doc record, @Param("example") DocExample example);
+    int updateByPrimaryKeySelective(Doc record);
 
-    int updateByExample(@Param("record") Doc record, @Param("example") DocExample example);
+    int updateByPrimaryKey(Doc record);
 }
