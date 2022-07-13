@@ -51,13 +51,16 @@
         <a-input v-model:value="doc.name"/>
       </a-form-item>
       <a-form-item label="父文档">
-        <a-input v-model:value="doc.parent"/>
-        <a-select
-            ref="select"
-            v-model:value="doc.parent"
+        <a-tree-select label="父文档"
+                       v-model:value="doc.parent"
+                       style="width: 100%"
+                       :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
+                       :tree-data="level1"
+                       placeholder="请选择父文档"
+                       tree-default-expand-all
+                       :replaceFields="{title: 'name', key: 'id', value: 'id'}"
         >
-          <a-select-option v-for="c in level1" :key="c.id" :disabled="doc.id===c.id">{{ c.name }}</a-select-option>
-        </a-select>
+        </a-tree-select>
       </a-form-item>
       <a-form-item label="顺序">
         <a-input v-model:value="doc.sort"/>
